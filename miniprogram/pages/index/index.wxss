@@ -1,0 +1,13 @@
+.container { padding: 40rpx; background: #f5f5f7; min-height: 100vh; }
+.header { text-align: center; padding: 60rpx 0 40rpx; }
+.title { font-size: 56rpx; font-weight: 700; color: #1a1a2e; display: block; }
+.subtitle { font-size: 26rpx; color: #888; display: block; margin-top: 12rpx; }
+.search-box { display: flex; background: #fff; border-radius: 24rpx; padding: 16rpx 20rpx; margin: 20rpx 0; box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08); }
+.search-input { flex: 1; font-size: 32rpx; color: #333; }
+.search-btn { background: #1a1a2e; color: #fff; border-radius: 16rpx; font-size: 28rpx; padding: 0 30rpx; }
+.quick-tags { display: flex; flex-wrap: wrap; gap: 16rpx; margin: 20rpx 0; }
+.tag { background: #fff; border-radius: 40rpx; padding: 12rpx 28rpx; font-size: 26rpx; color: #555; box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.06); }
+.section-title { font-size: 28rpx; color: #888; margin: 30rpx 0 16rpx; display: block; }
+.history-item { background: #fff; border-radius: 16rpx; padding: 24rpx; margin-bottom: 16rpx; }
+.history-query { font-size: 28rpx; color: #333; display: block; }
+.history-result { font-size: 24rpx; color: #888; display: block; margin-top: 8rpx; }

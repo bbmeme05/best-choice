@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="header">
+    <text class="title">Best Choice</text>
+    <text class="subtitle">告别选择困难，直接给你最优解</text>
+  </view>
+
+  <view class="search-box">
+    <input
+      class="search-input"
+      placeholder="我想..."
+      value="{{query}}"
+      bindinput="onQueryInput"
+      confirm-type="search"
+      bindconfirm="onSearch"
+    />
+    <button class="search-btn" bindtap="onSearch" loading="{{loading}}">
+      {{loading ? '' : '选我'}}
+    </button>
+  </view>
+
+  <view class="quick-tags">
+    <view class="tag" wx:for="{{quickTags}}" wx:key="*this" bindtap="onTagTap" data-tag="{{item}}">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="history" wx:if="{{history.length > 0}}">
+    <text class="section-title">最近查过的</text>
+    <view class="history-item" wx:for="{{history}}" wx:key="id" bindtap="onHistoryTap" data-item="{{item}}">
+      <text class="history-query">{{item.query_text}}</text>
+      <text class="history-result">→ {{item.query_cache.result.name}}</text>
+    </view>
+  </view>
+</view>
