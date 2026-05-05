@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="header">
+    <text class="title">我的偏好</text>
+  </view>
+
+  <view class="section">
+    <text class="label">常驻城市</text>
+    <input class="input" placeholder="如：成都" value="{{prefs.city}}" bindinput="onCityInput" />
+  </view>
+
+  <view class="section">
+    <text class="label">预算偏好</text>
+    <view class="options">
+      <view class="option {{prefs.budget === '低' ? 'active' : ''}}" bindtap="onBudgetTap" data-val="低">低</view>
+      <view class="option {{prefs.budget === '中等' ? 'active' : ''}}" bindtap="onBudgetTap" data-val="中等">中等</view>
+      <view class="option {{prefs.budget === '高' ? 'active' : ''}}" bindtap="onBudgetTap" data-val="高">高</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="label">口味偏好（多选）</text>
+    <view class="options">
+      <view
+        class="option {{prefs.cuisine.includes(item) ? 'active' : ''}}"
+        wx:for="{{cuisineOptions}}" wx:key="*this"
+        bindtap="onCuisineTap" data-val="{{item}}"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <button class="save-btn" bindtap="onSave" loading="{{saving}}">保存偏好</button>
+</view>
