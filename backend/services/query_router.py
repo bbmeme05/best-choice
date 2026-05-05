@@ -62,7 +62,27 @@ def update_cache_hit(cache_id: str) -> None:
     ).eq("id", cache_id).execute()
 
 
-def route_query(query: str, user_id: str) -> dict:
+def save_to_cache(
+    canonical_query: str,
+    embedding: list[float],
+    result: dict,
+    expires_at: str,
+) -> str:
+    """Save a new query result to the cache and return the cache row ID."""
+    db = get_db()
+    vector_str = f"[{','.join(str(x) for x in embedding)}]"
+    row = db.table("query_cache").insert({
+        "canonical_query": canonical_query,
+        "query_embedding": vector_str,
+        "result": result,
+        "expires_at": expires_at,
+        "hit_count": 1,
+        "last_hit_at": datetime.now(timezone.utc).isoformat(),
+    }).execute()
+    return row.data[0]["id"]
+
+
+def route_query(query: str, user_id: str | None = None) -> dict:
     """Route a user query: generate embedding, check cache, return result."""
     embedding = generate_embedding(query)
     cached = search_cache(embedding)

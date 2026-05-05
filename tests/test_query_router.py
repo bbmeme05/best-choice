@@ -9,7 +9,8 @@ def test_cache_hit_returns_result(mock_db):
         "expires_at": "2099-01-01T00:00:00+00:00",
     }
     with patch("services.query_router.generate_embedding") as mock_embed, \
-         patch("services.query_router.search_cache") as mock_search:
+         patch("services.query_router.search_cache") as mock_search, \
+         patch("services.query_router.update_cache_hit") as mock_update:
         mock_embed.return_value = [0.1] * 1536
         mock_search.return_value = cached_result
 
