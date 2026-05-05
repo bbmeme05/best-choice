@@ -4,7 +4,6 @@ from apscheduler.triggers.interval import IntervalTrigger
 from database import get_db
 from datetime import datetime, timedelta, timezone
 import logging
-import uuid
 
 _scheduler = BackgroundScheduler()
 _logger = logging.getLogger(__name__)
