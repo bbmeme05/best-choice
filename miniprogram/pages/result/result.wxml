@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="query-text">
+    <text>你问的是：{{query}}</text>
+  </view>
+
+  <view class="card" wx:if="{{result}}">
+    <view class="badge" wx:if="{{cacheHit}}">⚡ 即时推荐</view>
+    <view class="badge fresh" wx:else>🔍 AI 实时分析</view>
+
+    <text class="name">{{result.name}}</text>
+    <text class="reason">{{result.reason}}</text>
+
+    <view class="info-row" wx:if="{{result.address}}">
+      <text class="label">📍</text>
+      <text class="value">{{result.address}}</text>
+    </view>
+    <view class="info-row" wx:if="{{result.price_range}}">
+      <text class="label">💰</text>
+      <text class="value">{{result.price_range}}</text>
+    </view>
+    <view class="info-row" wx:if="{{result.rating}}">
+      <text class="label">⭐</text>
+      <text class="value">{{result.rating}} 分</text>
+    </view>
+    <view class="personalization" wx:if="{{result.personalization_note}}">
+      <text>✓ {{result.personalization_note}}</text>
+    </view>
+
+    <button class="link-btn" wx:if="{{result.link}}" bindtap="openLink">
+      查看详情 →
+    </button>
+  </view>
+
+  <button class="refresh-btn" bindtap="onRefresh" loading="{{refreshing}}">
+    换一个
+  </button>
+</view>
