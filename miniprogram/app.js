@@ -2,7 +2,7 @@ App({
   globalData: {
     token: null,
     userInfo: null,
-    apiBase: 'https://your-railway-app.up.railway.app'
+    apiBase: 'https://best-choice-production.up.railway.app'
   },
   onLaunch() {
     const token = wx.getStorageSync('token');
